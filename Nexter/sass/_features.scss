@@ -4,7 +4,8 @@
 
   margin: 15rem 0;
 
-  display: grid;
+  @supports(display: grid) {
+    display: grid;
   //grid-template-columns: repeat(3, 1fr);
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   /* Trick that makes the grid responsive */
@@ -12,9 +13,21 @@
   align-items: start;
   /* We need to align items inside our grid 
   that they take up the same amount of space */
+  }
 }
 
 .feature {
+
+  /* If browser doens't support grid */
+  float: left;
+  width: 33.3333%;
+  margin-bottom: 6rem;
+  /* If browser doens't support grid */
+
+  @supports(display: grid) {
+    width: auto;
+    margin-bottom: 0;
+  }
 
   display: grid;
   grid-template-columns: min-content 1fr;
